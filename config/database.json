@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "email": "samirharashov@gmail.com",
+      "password": "12345",
+      "firstName": "samir",
+      "lastName": "harashov",
+      "phoneNumber": "+380994371312",
+      "id": "171ba30d-3492-4336-af26-543e8514a075",
+      "createdAt": "2023-06-26T23:04:25.843Z"
+    }
+  ],
+  "fighters": [
+    {
+      "name": "Pikachu",
+      "power": 95,
+      "defense": 4,
+      "health": 100,
+      "id": "57aefdb2-2dca-4416-bec6-e73c92594d83",
+      "createdAt": "2023-06-26T23:04:47.220Z"
+    }
+  ],
+  "fights": []
+}
