@@ -34,7 +34,18 @@ const checkForbiddenFields = (req, res, forbiddenFields) => {
 const validateFields = (req, res, validations) => {
   for (const field in validations) {
     const { min, max, errorMessage } = validations[field];
-    const value = req.body[field];
+    let value;
+
+    if (field in req.body) {
+      value = req.body[field];
+
+      if (typeof value !== "number") {
+        handleError(`Invalid value type for ${field}`, res);
+        return false;
+      }
+    } else {
+      value = validations[field].default; // Use the default value if field is not present in req.body
+    }
 
     if (value < min || value > max) {
       handleError(errorMessage, res);

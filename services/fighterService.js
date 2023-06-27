@@ -22,7 +22,7 @@ class FighterService {
 
   createFighter(fighterData) {
     const searchFields = {
-      name: fighterData.name && fighterData.name.toLowerCase(),
+      name: fighterData.name,
     };
     const isBusy = fighterRepository.findByFields(searchFields);
 
@@ -32,6 +32,7 @@ class FighterService {
         name: fighterData.name,
         health: fighterData.health || 100,
       };
+
       const fighter = fighterRepository.create(updatedData);
 
       if (!fighter) {

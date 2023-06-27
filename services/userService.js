@@ -26,16 +26,7 @@ class UserService {
     const isBusy = userRepository.findByFields(searchFields);
 
     if (!isBusy) {
-      const updatedData = { ...data };
-      Object.keys(data).forEach((el) => {
-        const element = data[el];
-
-        updatedData[el] =
-          element === Number(element) ? element : element.toLowerCase();
-      });
-
-      const user = userRepository.create(updatedData);
-
+      const user = userRepository.create(data);
       if (!user) {
         throw Error("Can't create new user");
       }

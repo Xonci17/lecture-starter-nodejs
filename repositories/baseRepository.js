@@ -21,8 +21,16 @@ class BaseRepository {
   }
 
   findByFields(searchBy) {
-    for (const i of Object.keys(searchBy)) {
-      const result = this.dbContext.find({ [i]: searchBy[i] }).value();
+    for (const key of Object.keys(searchBy)) {
+      let result;
+      if (key === "name") {
+        const searchValue = searchBy[key].toLowerCase();
+        result = this.dbContext
+          .find((item) => item[key].toLowerCase() === searchValue)
+          .value();
+      } else {
+        result = this.dbContext.find({ [key]: searchBy[key] }).value();
+      }
       if (result) {
         return true;
       }
